@@ -2,12 +2,13 @@
 
 ## navBar
 
-| 变量      | 说明           | 类型    | 默认值    |
-| --------- | -------------- | ------- | --------- |
-| back      | 左边的 icon    | String  | 返回 icon |
-| title     | 标题           | String  | /         |
-| rightIcon | 右边的 icon    | Array   | /         |
-| whiteBar  | 导航栏底色白色 | Boolean | false     |
+| 变量         | 说明                   | 类型    | 默认值    |
+| ------------ | ---------------------- | ------- | --------- |
+| back         | 左边的 icon            | String  | 返回 icon |
+| title        | 标题                   | String  | /         |
+| rightIcon    | 右边的 icon            | Array   | /         |
+| whiteBar     | 导航栏底色白色         | Boolean | false     |
+| showLeftIcon | 控制左边 icon 是否显示 | Boolean | true      |
 
 ### 插槽
 

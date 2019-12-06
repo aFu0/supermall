@@ -62,7 +62,7 @@ export default {
   justify-content: space-around;
   width: 100%;
   height: 88px;
-  background-color: #f7daf7;
+  background-color: #ffcccc;
   &__item {
     text-align: center;
     color: #8A8A8A;
@@ -74,7 +74,7 @@ export default {
     font-size: 20px;
   }
   &__active {
-    color: #f0f;
+    color: #ff33cc;
   }
 }
 </style>

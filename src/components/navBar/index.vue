@@ -6,7 +6,7 @@
       <span
         class="nav-bar__left">
         <slot name="left-text">
-          <svg-icon @click.native="backClick" :iconNames="back"/>
+          <svg-icon v-if="showLeftIcon" @click.native="backClick" :iconNames="back"/>
         </slot>
       </span>
       <!-- center -->
@@ -40,7 +40,7 @@ export default {
     },
     title: {
       type: String,
-      default: '首页'
+      default: ''
     },
     // 右边的 icons
     rightIcon: {
@@ -50,6 +50,11 @@ export default {
     whiteBar: {
       type: Boolean,
       default: false
+    },
+    // 控制左边是否显示 icon
+    showLeftIcon: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -70,7 +75,7 @@ export default {
   left: 0;
   z-index: 6;
   width: 100%;
-  background-color: #f7daf7;
+  background-color: #ff99cc;
   box-shadow:0px 0px 16px 0px rgba(123,136,151,.2);
 }
 .white-bar {
@@ -97,6 +102,7 @@ export default {
     font-weight: normal;
     line-height: 88px;
     text-align: center;
+    color: #fff;
   }
   &__right {
     position: absolute;
