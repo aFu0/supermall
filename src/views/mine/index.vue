@@ -1,6 +1,7 @@
 <template>
   <div class="mine">
-    <goods-card
+    <waterfall :col="2" :data="goodsData" :gutterWidth="20">
+      <goods-card
       class="goods"
       v-for="goodsa in goodsData"
       :key="goodsa.iid"
@@ -8,7 +9,9 @@
       :header="goodsa.title"
       :price="goodsa.orgPrice"
       :collectNum="goodsa.sale"
-    ></goods-card>
+      ></goods-card>
+    </waterfall>
+
   </div>
 </template>
 
@@ -45,8 +48,8 @@ export default {
 }
 .goods {
   margin-bottom: 20px;
-  &:nth-child(2n) {
-    margin-left: 20px;
-  }
+  // &:nth-child(2n) {
+  //   margin-left: 20px;
+  // }
 }
 </style>

@@ -10,10 +10,16 @@ import VueLazyload from 'vue-lazyload'
 // style
 import '@/assets/style/reset.css'
 
+// 瀑布流
+import waterfall from 'vue-waterfall2'
+
 // vant
 import { Swipe, SwipeItem } from 'vant'
 
 Vue.use(Swipe).use(SwipeItem)
+
+// 瀑布流
+Vue.use(waterfall)
 
 // 懒加载
 Vue.use(VueLazyload)
