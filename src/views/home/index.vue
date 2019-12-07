@@ -31,11 +31,19 @@
     </section>
     <!-- tab 页 -->
     <section class="tab-sum">
-      <tab-page :tabList="tabList"></tab-page>
+      <tab-page :tabList="tabList" @tabClick="tabClick"></tab-page>
     </section>
     <!-- 商品内容 -->
-    <section>
-      <goods-card></goods-card>
+    <section class="goods-sum">
+      <goods-card
+        class="goods-sum__goods"
+        v-for="goodsa in goodsList"
+        :key="goodsa.iid"
+        :goodImg="goodsa.showLarge.img"
+        :header="goodsa.title"
+        :price="goodsa.orgPrice"
+        :collectNum="goodsa.sale"
+      ></goods-card>
     </section>
     <ul>
       <li v-for="i in 99" :key="i">{{i}}</li>
@@ -67,7 +75,12 @@ export default {
         {
           title: '精选'
         }
-      ]
+      ],
+      goodsList: [],
+      getGoodsParams: {
+        type: 'sell',
+        page: 1
+      }
     }
   },
   created () {
@@ -79,17 +92,36 @@ export default {
       console.log(res)
     })
     // 调取 tab 页数据
-    API.getTabPageData({
-      type: 'sell',
-      page: 1
-    }).then(res => {
-      console.log(res)
-    })
+    this.getGoodData()
   },
   methods: {
+    // 调取 tab 页数据
+    getGoodData () {
+      API.getTabPageData(this.getGoodsParams).then(res => {
+        this.goodsList = res.data.list
+        console.log(res)
+      })
+    },
     // 轮播
     onChange (index) {
       this.current = index
+    },
+    // 点击切换 tab
+    tabClick (i) {
+      switch (i) {
+        case 0:
+          this.getGoodsParams.type = 'sell'
+          this.getGoodData()
+          break
+        case 1:
+          this.getGoodsParams.type = 'new'
+          this.getGoodData()
+          break
+        case 2:
+          this.getGoodsParams.type = 'pop'
+          this.getGoodData()
+          break
+      }
     }
   },
   components: {
@@ -150,5 +182,18 @@ export default {
 .tab-sum {
   position: sticky;
   top: 88px;
+}
+// 商品内容
+.goods-sum {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  box-sizing: border-box;
+  &__goods {
+    margin-bottom: 20px;
+    &:nth-child(2n) {
+      margin-left: 20px;
+    }
+  }
 }
 </style>

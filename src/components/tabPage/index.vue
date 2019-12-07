@@ -17,7 +17,7 @@ export default {
   methods: {
     tabClick (i) {
       this.activeIn = i
-      this.$emit('tabClick')
+      this.$emit('tabClick', i)
     }
   },
   data () {
@@ -31,12 +31,21 @@ export default {
 <style lang="scss" scoped>
 .tab-page {
   display: flex;
-  justify-content: space-evenly;
   padding-top: 20px;
   background-color: #fff;
-  box-shadow:0px 3px 1vw 0px rgba(123,136,151,.2);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    box-shadow:0px 3px 1vw 0px rgba(123,136,151,.2);
+  }
   &__item {
+    flex: 1;
     padding: 10px 0;
+    text-align: center;
   }
   &__text {
     color: #8A8A8A;

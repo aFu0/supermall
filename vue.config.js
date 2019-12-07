@@ -49,7 +49,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://106.54.54.237:8000',
+        target: process.env.VUE_APP_SERVER_URL,
         ws: true,
         changeOrigin: true // 如果接口跨域，需要进行这个参数配置为true`
       }
