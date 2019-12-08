@@ -1,6 +1,6 @@
 <template>
   <div class="tabbar">
-    <div :class="['tabbar__item', {'tabbar__active':activeState === tab.active}]" v-for="tab in tabBarConfig"
+    <div :class="['tabbar__item', {'tabbar__active':activeState === tab.router}]" v-for="tab in tabBarConfig"
       :key="tab.active"
       @click="actives(tab.active, tab.router)"
       >
@@ -27,26 +27,29 @@ export default {
           title: '分类',
           normal: 'classify',
           active: '1',
-          router: '/classify'
+          router: '/classify/index'
         },
         {
           title: '购物车',
           normal: 'goodsCart',
           active: '2',
-          router: '/goods-cart'
+          router: '/goods-cart/index'
         },
         {
           title: '我的',
           normal: 'mine',
           active: '3',
-          router: '/mine'
+          router: '/mine/index'
         }
       ]
     }
   },
+  created () {
+    this.activeState = this.$route.fullPath
+  },
   methods: {
     actives (val, route) {
-      this.activeState = val
+      this.activeState = route
       this.$router.push(route)
     }
   }
