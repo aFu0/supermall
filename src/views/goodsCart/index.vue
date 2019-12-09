@@ -1,33 +1,22 @@
 <template>
-  <div ref="goods">
-    <btn bgColor="blue"></btn>
-    <btn></btn>
-    <btn bgColor="#0f0"></btn>
-    <btn></btn>
-    <btn bgColor="red" weight></btn>
-    <btn></btn>
-    <btn></btn>
-    <btn bgColor="gray"></btn>
-    <btn></btn>
-    <btn></btn>
-    <btn></btn>
+  <div class="goods">
+    <nav-bar
+      :showLeftIcon="false"
+      title="购物车"
+    ></nav-bar>
+    <section class="content">
+      <statistic-item></statistic-item>
+    </section>
   </div>
 </template>
 
 <script>
-import btn from './btn'
+import navBar from '@/components/navBar'
+import statisticItem from './components/statisticItem'
 export default {
   name: 'goodsCart',
   provide () {
     return {
-      coverage: {
-        bgColor: '#00f',
-        foo: {
-          green: '#0f0',
-          bgColor: '#00f',
-          gray: '#8a8a8a'
-        }
-      }
     }
   },
   data () {
@@ -43,13 +32,14 @@ export default {
     }
   },
   components: {
-    btn
+    navBar,
+    statisticItem
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.aaaa {
-  background-color: #00f;
+.goods {
+  padding: 118px 0;
 }
 </style>

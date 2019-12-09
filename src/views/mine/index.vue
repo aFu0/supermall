@@ -1,55 +1,57 @@
 <template>
   <div class="mine">
-    <waterfall :col="2" :data="goodsData" :gutterWidth="20">
-      <goods-card
-      class="goods"
-      v-for="goodsa in goodsData"
-      :key="goodsa.iid"
-      :goodImg="goodsa.showLarge.img"
-      :header="goodsa.title"
-      :price="goodsa.orgPrice"
-      :collectNum="goodsa.sale"
-      ></goods-card>
-    </waterfall>
-
+    <nav-bar
+      :showLeftIcon="false"
+      title="晓帅的商场"
+      >
+      <template #tab>
+        <section class="introduction">
+          <div class="basic">
+            <img class="basic__img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFPEXC1n6qkjiGNdEZR9DtmcY7tunbBuMTueuqcq4PjfXLZFOnEg&s" alt="">
+            <div class="basic__message">
+              <p class="basic__show-login">登录/注册</p>
+              <p class="basic__phone-no">暂无绑定手机号</p>
+            </div>
+          </div>
+        </section>
+      </template>
+    </nav-bar>
   </div>
 </template>
 
 <script>
-import goodsCard from '@/components/goodsCard'
-import API from '@/api/modules/mine'
+import navBar from '@/components/navBar'
 export default {
   name: 'mine',
   data () {
     return {
-      goodsData: []
     }
   },
   created () {
-    API.gethomedata({
-      type: 'sell',
-      page: 1
-    }).then(res => {
-      this.goodsData = res.data.list
-      console.log(res)
-    })
   },
   components: {
-    goodsCard
+    navBar
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.mine {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 30px;
+.introduction {
+  width: 100%;
+  padding: 0 20px 20px;
+  box-sizing: border-box;
 }
-.goods {
-  margin-bottom: 20px;
-  // &:nth-child(2n) {
-  //   margin-left: 20px;
-  // }
+.basic {
+  display: flex;
+  &__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  &__message {
+    padding-left: 10px;
+    font-size: 28px;
+    color: #fff;
+  }
 }
 </style>
