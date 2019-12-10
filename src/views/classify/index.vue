@@ -1,70 +1,90 @@
 <template>
   <div class="classify">
-    <goods-card
-      ref="gooditem"
-      class="goods"
-      v-for="goodsa in goodsData"
-      :key="goodsa.iid"
-      :goodImg="goodsa.showLarge.img"
-      :header="goodsa.title"
-      :price="goodsa.orgPrice"
-      :collectNum="goodsa.sale"
-    ></goods-card>
+    <observer @getData="getData">
+    <!-- 商品内容 -->
+    <!-- <section class="goods-sum">
+      <goods-card
+        class="goods-sum__goods"
+        v-for="goodsa in goodsList"
+        :key="goodsa.iid"
+        :goodImg="goodsa.showLarge.img"
+        :header="goodsa.title"
+        :price="goodsa.orgPrice"
+        :collectNum="goodsa.sale"
+      ></goods-card>
+    </section> -->
+
+      <section v-for="(item, i) in quantity" :key="i" class="item">{{i}}</section>
+    </observer>
   </div>
 </template>
 
 <script>
-import goodsCard from '@/components/goodsCard'
-import API from '@/api/modules/mine'
+// import goodsCard from '@/components/goodsCard'
+// import API from '@/api/modules/home'
+import observer from './observer'
 export default {
   name: 'classify',
   data () {
     return {
-      goodsData: []
+      // 数据条数
+      quantity: 1
+      // getGoodsParams: {
+      //   type: 'sell',
+      //   page: 1
+      // },
+      // goodsList: []
     }
   },
   created () {
-    API.gethomedata({
-      type: 'sell',
-      page: 1
-    }).then(res => {
-      this.goodsData = res.data.list
-      console.log(res)
-    }).then(() => {
-      this.waterfall()
-    })
-    // this.$nextTick(function () {
-    //   this.waterfall()
+    // API.getTabPageData(this.getGoodsParams).then(res => {
+    //   this.goodsList = res.data.list
+    //   console.log(res)
     // })
   },
   methods: {
-    waterfall () {
-      console.log(123)
-      for (var i = 0; i < this.goodsData.length; i++) {
-        if (i < 2) {
-          console.log(i)
+    getData (callback) {
+      window.setTimeout(() => {
+        this.quantity += 10
+        if (this.quantity >= 120) {
+          // eslint-disable-next-line standard/no-callback-literal
+          callback('close')
         } else {
-          console.log(i)
+          // eslint-disable-next-line standard/no-callback-literal
+          callback(false)
         }
-      }
+      }, 3000)
     }
   },
   components: {
-    goodsCard
+    observer
+    // goodsCard
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .classify {
-  flex-wrap: wrap;
-  padding: 0 30px;
+  padding: 30px;
+  box-sizing: border-box;
 }
-.goods {
+.goods-sum {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.goods-sum__goods {
   margin-bottom: 20px;
-  float: left;
-  // &:nth-child(2n) {
-  //   margin-left: 20px;
-  // }
+}
+.item {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 200px;
+  font-weight: 600;
+  font-size: 40px;
+  border-radius: 20px;
+  box-shadow:0px 6px 20px 0px rgba(0,19,34,0.1);
 }
 </style>

@@ -27,4 +27,4 @@ import navBar from '@/components/navBar'
 
 ##### 图示：
 
-![](/images/navBar.jpg)
+![](./images/navBar.jpg)
