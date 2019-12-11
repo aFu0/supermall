@@ -1,3 +1,5 @@
+import vuex from '@/store/index'
+
 /**
  * 引入axios
  */
@@ -17,8 +19,8 @@ const instance = axios.create({
   timeout: 1000
 })
 /**
- * 把 axios 的 all 和 spread 方法赋给 instance
- */
+     * 把 axios 的 all 和 spread 方法赋给 instance
+     */
 instance.all = axios.all
 instance.spread = axios.spread
 // 给 post 设置请求头
@@ -41,6 +43,25 @@ function get (url, params) {
 function post (url, params) {
   return requestByPost(instance, url, params)
 }
+
+/**
+ * 拦截器
+ */
+instance.interceptors.request.use(response => {
+  vuex.commit('switchLoading', true)
+  return response
+}, error => {
+  vuex.commit('switchLoading', false)
+  return error
+})
+
+instance.interceptors.response.use(response => {
+  vuex.commit('switchLoading', false)
+  return response
+}, error => {
+  vuex.commit('switchLoading', false)
+  return error
+})
 
 export {
   get,

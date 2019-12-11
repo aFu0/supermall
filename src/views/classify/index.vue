@@ -1,5 +1,6 @@
 <template>
   <div class="classify">
+    <loading v-show="loading"></loading>
     <observer @getData="getData">
     <!-- 商品内容 -->
     <!-- <section class="goods-sum">
@@ -14,7 +15,7 @@
       ></goods-card>
     </section> -->
 
-      <section v-for="(item, i) in quantity" :key="i" class="item">{{i}}</section>
+      <section v-for="(item, i) in quantity" :key="i" @click="aaa" class="item">{{i}}</section>
     </observer>
   </div>
 </template>
@@ -23,12 +24,15 @@
 // import goodsCard from '@/components/goodsCard'
 // import API from '@/api/modules/home'
 import observer from './observer'
+// loading
+import loading from '@/components/loading'
 export default {
   name: 'classify',
   data () {
     return {
       // 数据条数
-      quantity: 1
+      quantity: 1,
+      loading: false
       // getGoodsParams: {
       //   type: 'sell',
       //   page: 1
@@ -43,8 +47,12 @@ export default {
     // })
   },
   methods: {
+    aaa () {
+      console.log(123)
+    },
     getData (callback) {
       window.setTimeout(() => {
+        this.loading = false
         this.quantity += 10
         if (this.quantity >= 120) {
           // eslint-disable-next-line standard/no-callback-literal
@@ -54,10 +62,12 @@ export default {
           callback(false)
         }
       }, 3000)
+      this.loading = true
     }
   },
   components: {
-    observer
+    observer,
+    loading
     // goodsCard
   }
 }

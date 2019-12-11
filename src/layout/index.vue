@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading></loading>
     <!-- 动画 -->
     <transition>
       <router-view />
@@ -11,15 +12,16 @@
 
 <script>
 import tabBar from '@/components/tabBar'
+import loading from '@/components/loading'
 export default {
   name: 'layout',
   data () {
     return {
-
     }
   },
   components: {
-    tabBar
+    tabBar,
+    loading
   }
 }
 </script>
