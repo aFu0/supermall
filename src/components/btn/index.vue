@@ -1,8 +1,8 @@
 <template>
     <button
       @click="btnClick"
-      :class="['btn', bbb]"
-      :style="ccc"
+      :class="['btn', propsMdn]"
+      :style="englishColor"
     >按钮</button>
 </template>
 
@@ -12,9 +12,12 @@ export default {
   inject: ['coverage'],
   data () {
     return {
-      ccc: {},
-      colorArr: ['red', 'blue'],
-      extendColor: []
+      // 里面没有定制  使用者自己定义的样式
+      englishColor: {},
+      // 组件里面定制好的样式 // 控制 类 的
+      colorArr: ['red', 'blue']
+      //
+      // extendColor: []
     }
   },
   props: {
@@ -23,20 +26,22 @@ export default {
     }
   },
   computed: {
-    bbb () {
+    propsMdn () {
       let result = this.bgColor
+      // 是 props 传值还是 inject 传值
       if (this.bgColor) {
+        // 判断 props 传过来的是否 data 里有定义好的类
         if (this.colorArr.includes(this.bgColor) === false && this.coverage.foo.hasOwnProperty(this.bgColor) === false) {
           result = ''
-          this.$set(this.ccc, 'backgroundColor', this.bgColor)
+          this.$set(this.englishColor, 'backgroundColor', this.bgColor)
         } else if (this.colorArr.includes(this.bgColor) === false && this.coverage.foo.hasOwnProperty(this.bgColor)) {
           result = ''
-          this.$set(this.ccc, 'backgroundColor', this.coverage.foo[this.bgColor])
+          this.$set(this.englishColor, 'backgroundColor', this.coverage.foo[this.bgColor])
         }
       } else {
         if (this.coverage.bgColor) {
           result = ''
-          this.$set(this.ccc, 'backgroundColor', this.coverage.bgColor)
+          this.$set(this.englishColor, 'backgroundColor', this.coverage.bgColor)
         }
       }
       return result

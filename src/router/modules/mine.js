@@ -9,7 +9,7 @@ const mine = {
       name: 'mine',
       component: () => import('@/views/mine'),
       meta: {
-        showTabBar: true
+        showTabBar: false
       }
     }
   ]

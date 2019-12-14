@@ -9,7 +9,7 @@ const classify = {
       name: 'classify',
       component: () => import('@/views/classify'),
       meta: {
-        showTabBar: false
+        showTabBar: true
       }
     }
   ]

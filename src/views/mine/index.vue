@@ -1,5 +1,5 @@
-<template>
-  <div class="mine">
+  <!-- <template>
+<div class="mine">
     <nav-bar
       :showLeftIcon="false"
       title="晓帅的商场"
@@ -54,4 +54,27 @@ export default {
     color: #fff;
   }
 }
+</style>
+-->
+<template>
+  <div>
+    <flexo-btn></flexo-btn>
+  </div>
+</template>
+
+<script>
+import flexoBtn from '@/components/btn/flexoBtn'
+export default {
+  name: 'mine',
+  data () {
+    return {}
+  },
+  components: {
+    flexoBtn
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
 </style>
