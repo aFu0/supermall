@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      :class="['Button',distinguishStyle]"
+      :class="['Button',distinguishStyle,round]"
       :style="DIYs"
     >按钮</button>
   </div>
@@ -10,8 +10,8 @@
 <script>
 const styleKeys = {
   bgColor: 'backgroundColor',
-  round: 'borderRadius'
-  // edge: 'border'
+  round: 'borderRadius',
+  edge: 'border'
 }
 export default {
   name: 'Button',
@@ -21,16 +21,17 @@ export default {
       type: String
     },
     round: {
+      type: [Boolean, String],
+      default: false
+    },
+    edge: {
       type: [Boolean, String]
     }
-    // edge: {
-    //   type: [Boolean, String]
-    // }
   },
   data () {
     return {
       // 定义好的样式             //渲染到 class 上的
-      workableArr: ['red', 'blue', 'default'],
+      workableArr: ['red', 'blue', 'bin'],
       // 使用者需要组件定义样式   //渲染到 style 上的
       DIYs: {}
     }
@@ -64,12 +65,14 @@ export default {
   height: 88px;
   font-size: 30px;
   color: #fff;
-  border-radius: 88px;
   border: 0;
-  background-color: #c7c884;
+  background-color: #999;
 }
-.default {
-  border: 1px solid #ccc;
+.round {
+  border-radius: 88px;
+}
+.bin {
+  border: 6px solid red;
   background-color: #fff;
 }
 .red {

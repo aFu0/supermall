@@ -65,11 +65,8 @@ export default {
     <!-- 自己传入的 -->
     <Button class="btn" bgColor="green"></Button>
     <Button class="btn" bgColor="gray" round="10px"></Button>
-    <Button class="btn" bgColor="#f96532" round="0"></Button>
-    <Button class="btn" round="50%"></Button>
-    <Button class="btn" bgColor="default"></Button>
-    <Button class="btn" bgColor="#fff"></Button>
-    <button>asadddddddddddddddddddddds</button>
+    <Button class="btn" bgColor="#f96532"></Button>
+    <Button class="btn" bgColor="bin"></Button>
   </div>
 </template>
 

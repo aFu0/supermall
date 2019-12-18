@@ -3,10 +3,10 @@
     <loading></loading>
     <!-- 动画 -->
     <transition>
-      <router-view />
+      <router-view :key="viewKey"/>
     </transition>
     <!-- tabBar -->
-    <tab-bar v-show="$route.meta.showTabBar"/>
+    <tab-bar v-show="$route.meta.showTabBar" :activeState="viewKey"/>
   </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
   name: 'layout',
   data () {
     return {
+    }
+  },
+  computed: {
+    viewKey () {
+      return this.$route.path
     }
   },
   components: {

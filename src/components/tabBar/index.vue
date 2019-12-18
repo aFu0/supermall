@@ -13,9 +13,14 @@
 <script>
 export default {
   name: 'tabBar',
+  props: {
+    activeState: {
+      type: String,
+      default: '/home'
+    }
+  },
   data () {
     return {
-      activeState: '0',
       tabBarConfig: [
         {
           title: '首页',
@@ -44,12 +49,16 @@ export default {
       ]
     }
   },
+  watch: {
+    activeState (newName, oldName) {
+      this.activeState = newName
+    }
+  },
   created () {
     this.activeState = this.$route.fullPath
   },
   methods: {
     actives (val, route) {
-      this.activeState = route
       this.$router.push(route)
     }
   }
