@@ -47,6 +47,9 @@ module.exports = {
   // Disable sourceMap for production
   // productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
   devServer: {
+    // 修改端口
+    port: 8099,
+    // 接口
     proxy: {
       '/api': {
         target: process.env.VUE_APP_SERVER_URL,

@@ -89,7 +89,7 @@ export default {
       this.swipedata = res.data.banner
       this.recommend = res.data.recommend
       // this.keyword = res.data.dKeyword
-      console.log(res)
+      // console.log(res)
     })
     // 调取 tab 页数据
     this.getGoodData()
@@ -99,7 +99,7 @@ export default {
     getGoodData () {
       API.getTabPageData(this.getGoodsParams).then(res => {
         this.goodsList = res.data.list
-        console.log(res)
+        // console.log(res)
       })
     },
     // 轮播

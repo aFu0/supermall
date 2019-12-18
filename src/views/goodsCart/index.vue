@@ -48,13 +48,13 @@ export default {
 <template>
   <div ref="goods">
     <btn bgColor="blue"></btn>
+    <btn bgColor="red" weight></btn>
+    <btn bgColor="gray"></btn>
     <btn></btn>
     <btn bgColor="#0f0"></btn>
     <btn></btn>
-    <btn bgColor="red" weight></btn>
     <btn></btn>
     <btn></btn>
-    <btn bgColor="gray"></btn>
     <btn></btn>
     <btn></btn>
     <btn></btn>
@@ -68,9 +68,11 @@ export default {
   provide () {
     return {
       coverage: {
+        // 设置全体颜色
         bgColor: '#00f',
         foo: {
-          green: '#0f0',
+          // 设置里面没有的颜色 单个设置
+          // green: '#0f0',
           bgColor: '#00f',
           gray: '#8a8a8a'
         }

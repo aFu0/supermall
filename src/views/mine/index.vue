@@ -58,23 +58,48 @@ export default {
 -->
 <template>
   <div>
-    <flexo-btn></flexo-btn>
+    <router-link to="/animation">动画</router-link>
+    <!-- 使用组件定义好的 -->
+    <Button class="btn" bgColor="red" round="10px"></Button>
+    <Button class="btn" bgColor="blue"></Button>
+    <!-- 自己传入的 -->
+    <Button class="btn" bgColor="green"></Button>
+    <Button class="btn" bgColor="gray" round="10px"></Button>
+    <Button class="btn" bgColor="#f96532" round="0"></Button>
+    <Button class="btn" round="50%"></Button>
+    <Button class="btn" bgColor="default"></Button>
+    <Button class="btn" bgColor="#fff"></Button>
+    <button>asadddddddddddddddddddddds</button>
   </div>
 </template>
 
 <script>
-import flexoBtn from '@/components/btn/flexoBtn'
+import Button from '@/components/btn/Button'
 export default {
   name: 'mine',
+  provide () {
+    return {
+      userDefined: {
+        bgColor: '#fdd',
+        // 自定义
+        customize: {
+          green: '#0f0',
+          gray: '#8a8a8a'
+        }
+      }
+    }
+  },
   data () {
     return {}
   },
   components: {
-    flexoBtn
+    Button
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.btn {
+  margin-top: 20px;
+}
 </style>

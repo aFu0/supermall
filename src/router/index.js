@@ -4,6 +4,7 @@ import home from './modules/home'
 import classify from './modules/classify'
 import goodsCart from './modules/goodsCart'
 import mine from './modules/mine'
+import animation from './modules/animation'
 
 Vue.use(VueRouter)
 
@@ -11,7 +12,8 @@ const routes = [
   home,
   classify,
   goodsCart,
-  mine
+  mine,
+  animation
 ]
 
 const originalPush = VueRouter.prototype.push

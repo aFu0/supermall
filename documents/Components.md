@@ -28,3 +28,22 @@ import navBar from '@/components/navBar'
 ##### 图示：
 
 ![](./images/navBar.jpg)
+
+## 按钮
+
+#### Button
+
+| 变量 | 说明 | 类型 | 默认 |
+| ---- | ---- | ---- | ---- |
+|      |      |      |      |
+|      |      |      |      |
+|      |      |      |      |
+
+
+
+##### 使用方法
+
+```JavaScript
+import Button from '@/components/btn/Button'
+```
+
