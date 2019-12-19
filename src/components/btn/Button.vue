@@ -67,6 +67,9 @@ export default {
   color: #fff;
   border: 0;
   background-color: #999;
+  &:active {
+    background-color: rgba(255, 0, 0, .2);
+  }
 }
 .round {
   border-radius: 88px;

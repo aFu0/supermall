@@ -16,12 +16,12 @@
 <!-- ------------------------------------------------------------------------------------------ -->
     <div class="fun">
       <button @click="show = !show" class="btn">弹跳</button>
-      <transition name="fade">
+      <!-- <transition name="fade">
         <div v-show="show" class="one">弹跳</div>
-      </transition>
-      <!-- <transition name="get-away">
-        <div class="two">aksaopjfdposajhgoiasjh</div>
       </transition> -->
+      <transition name="get-away">
+        <div v-show="show" class="two">进场/离场</div>
+      </transition>
     </div>
   </div>
 </template>
@@ -62,7 +62,9 @@ export default {
   border: 0;
   background-color: #ddd;
 }
-.one {
+// ////////////////////////////////////////////////////////////////////////////
+.one,
+.two {
   position: absolute;
   top: 0;
   left: 0;
@@ -72,7 +74,7 @@ export default {
   width: 200px;
   height: 300px;
   text-align: center;
-  font-size: 60px;
+  font-size: 30px;
   color: #fff;
   line-height: 300px;
   border-radius: 20px;
@@ -97,6 +99,25 @@ export default {
   }
 }
 .get-away-enter-active {
-
+  animation: enter 2s;
+}
+.get-away-leave-active {
+  animation: away 2s reverse;
+}
+@keyframes enter {
+  0% {
+    transform: translate(100%,0)
+  }
+  100% {
+    transform: translate(0,0)
+  }
+}
+@keyframes away {
+  0% {
+    transform: translate(-100%,0)
+  }
+  100% {
+    transform: translate(0,0)
+  }
 }
 </style>
